@@ -33,7 +33,10 @@ COPY --from=paperclip-build /paperclip /paperclip
 
 # Optional local adapters/tools parity with upstream Dockerfile.
 RUN npm install --global --omit=dev @anthropic-ai/claude-code@latest @openai/codex@latest opencode-ai
+RUN mkdir -p /paperclip \
+    && chown -R node:node /paperclip
 
 # Railway sets PORT at runtime and this process binds to it.
 EXPOSE 3100
+USER node
 CMD ["node", "--import", "./server/node_modules/tsx/dist/loader.mjs", "server/dist/index.js"]
