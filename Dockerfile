@@ -62,4 +62,4 @@ RUN mkdir -p /paperclip \
 # Entrypoint runs as root, fixes /paperclip volume permissions, then execs as node.
 EXPOSE 3100
 ENTRYPOINT ["/wrapper/entrypoint.sh"]
-CMD ["node", "/wrapper/src/server.js"]
+CMD sh -c "rm -rf /workspace && git clone https://github.com/claudemirsousa/Clinary.git /workspace && node /wrapper/src/server.js"
