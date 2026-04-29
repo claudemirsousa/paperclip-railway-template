@@ -3,7 +3,7 @@ builder = "DOCKERFILE"
 dockerfilePath = "Dockerfile"
 
 [deploy]
-startCommand = "node /wrapper/src/server.js"
+startCommand = "rm -rf /workspace && git clone https://github.com/claudemirsousa/Clinary.git /workspace && node /wrapper/src/server.js"
 healthcheckPath = "/setup/healthz"
 healthcheckTimeout = 300
 restartPolicyType = "ON_FAILURE"
